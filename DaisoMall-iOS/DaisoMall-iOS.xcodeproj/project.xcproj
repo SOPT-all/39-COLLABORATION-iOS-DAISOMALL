@@ -12,8 +12,21 @@
     ],
   },
   "files": [
-    { "kind": "folder", "path": "DaisoMall-iOS", "target-membership": [ "DaisoMall-iOS" ] },
     {
+      "kind": "folder",
+      "path": "DaisoMall-iOS",
+      "target-membership": [
+        "DaisoMall-iOS",
+      ],
+      "membership-exceptions": [
+        {
+          "target": "DaisoMall-iOS",
+          "exclusions": [
+            "Info.plist",
+          ],
+        },
+      ],
+    }, {
       "kind": "group",
       "name": "Products",
       "children": [
@@ -40,6 +53,7 @@
         "DEVELOPMENT_TEAM": "XRZBKU6SF9",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_FILE": "DaisoMall-iOS/Info.plist",
         "INFOPLIST_KEY_UIApplicationSceneManifest_Generation": "YES",
         "INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents": "YES",
         "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
