@@ -8,104 +8,88 @@
 import SwiftUI
 
 enum Typography {
-    case titleB24
-    case titleB18
-    case bodyB16
-    case bodyM16
-    case bodyM14
-    case bodyB14
-    case bodyR14
-    case bodySB12
-    case bodyM12
-    case bodyR12
-    case bodyM11
-    case captionSB10
-    case captionR10
-    case captionB10
-    case captionM10
-    case captionB8
-
+    case title_b_24
+    case title_b_18
+    case body_b_16
+    case body_m_16
+    case body_m_14
+    case body_b_14
+    case body_r_14
+    case body_sb_12
+    case body_m_12
+    case body_r_12
+    case body_m_11
+    case caption_sb_10
+    case caption_r_10
+    case caption_b_10
+    case caption_m_10
+    case caption_b_8
+    
+    
     var size: CGFloat {
         switch self {
-        case .titleB24: 24
-        case .titleB18: 18
-        case .bodyB16: 16
-        case .bodyM16: 16
-        case .bodyM14: 14
-        case .bodyB14: 14
-        case .bodyR14: 14
-        case .bodySB12: 12
-        case .bodyM12: 12
-        case .bodyR12: 12
-        case .bodyM11: 11
-        case .captionSB10: 10
-        case .captionR10: 10
-        case .captionB10: 10
-        case .captionM10: 10
-        case .captionB8: 8
+        case .title_b_24: 24
+        case .title_b_18: 18
+        case .body_b_16: 16
+        case .body_m_16: 16
+        case .body_m_14: 14
+        case .body_b_14: 14
+        case .body_r_14: 14
+        case .body_sb_12: 12
+        case .body_m_12: 12
+        case .body_r_12: 12
+        case .body_m_11: 11
+        case .caption_sb_10: 10
+        case .caption_r_10: 10
+        case .caption_b_10: 10
+        case .caption_m_10: 10
+        case .caption_b_8: 8
         }
     }
-
+    
     var weight: Font.Weight {
         switch self {
-        case .titleB24: .bold
-        case .titleB18: .bold
-        case .bodyB16: .bold
-        case .bodyM16: .medium
-        case .bodyM14: .medium
-        case .bodyB14: .bold
-        case .bodyR14: .regular
-        case .bodySB12: .semibold
-        case .bodyM12: .medium
-        case .bodyR12: .regular
-        case .bodyM11: .medium
-        case .captionSB10: .semibold
-        case .captionR10: .regular
-        case .captionB10: .bold
-        case .captionM10: .medium
-        case .captionB8: .bold
+        case .title_b_24: .bold
+        case .title_b_18: .bold
+        case .body_b_16: .bold
+        case .body_m_16: .medium
+        case .body_m_14: .medium
+        case .body_b_14: .bold
+        case .body_r_14: .regular
+        case .body_sb_12: .semibold
+        case .body_m_12: .medium
+        case .body_r_12: .regular
+        case .body_m_11: .medium
+        case .caption_sb_10: .semibold
+        case .caption_r_10: .regular
+        case .caption_b_10: .bold
+        case .caption_m_10: .medium
+        case .caption_b_8: .bold
         }
     }
-
+    
     var lineHeightPercent: CGFloat {
-        switch self {
-        case .titleB24: 120
-        case .titleB18: 120
-        case .bodyB16: 120
-        case .bodyM16: 120
-        case .bodyM14: 120
-        case .bodyB14: 120
-        case .bodyR14: 120
-        case .bodySB12: 120
-        case .bodyM12: 120
-        case .bodyR12: 120
-        case .bodyM11: 120
-        case .captionSB10: 120
-        case .captionR10: 120
-        case .captionB10: 120
-        case .captionM10: 120
-        case .captionB8: 120
-        }
+        120
     }
-
+    
     var letterSpacingPercent: CGFloat {
         switch self {
-        case .titleB24: -4
-        case .titleB18: -1
-        case .bodyB16: -2
-        case .bodyM16: -4
-        case .bodyM14: -2
-        case .bodyB14: 0
-        case .bodyR14: -1
-        case .bodySB12: -2
-        case .bodyM12: -2
-        case .bodyR12: -4
-        case .bodyM11: 2
-        case .captionSB10: -4
-        case .captionR10: -4
-        case .captionB10: -1
-        case .captionM10: -1
-        case .captionB8: 0
+        case .title_b_24: -4
+        case .title_b_18: -1
+        case .body_b_16: -2
+        case .body_m_16: -4
+        case .body_m_14: -2
+        case .body_b_14: 0
+        case .body_r_14: -1
+        case .body_sb_12: -2
+        case .body_m_12: -2
+        case .body_r_12: -4
+        case .body_m_11: 2
+        case .caption_sb_10: -4
+        case .caption_r_10: -4
+        case .caption_b_10: -1
+        case .caption_m_10: -1
+        case .caption_b_8: 0
         }
     }
 
