@@ -33,9 +33,14 @@ struct SearchBarLarge: View {
                     .foregroundStyle(Color(.grey10))
                     .frame(maxWidth: .infinity)
 
-                    Image(.icSearch)
-                        .resizable()
-                        .frame(width: 20, height: 20)
+                    Button {
+                        // 추후에 동작 추가 예정
+                    } label: {
+                        Image(.icSearch)
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal, 10)
@@ -48,6 +53,6 @@ struct SearchBarLarge: View {
 
 #Preview {
     SearchBarLarge(
-            text: .constant("searchText")
+            text: .constant("")
     )
 }
