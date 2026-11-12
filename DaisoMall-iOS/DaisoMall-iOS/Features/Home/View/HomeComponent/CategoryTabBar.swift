@@ -1,5 +1,5 @@
 //
-//  CategoryTapBar.swift
+//  CategoryTabBar.swift
 //  DaisoMall-iOS
 //
 //  Created by BY on 11/12/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryTapBar: View {
+struct CategoryTabBar: View {
     let category: Category
 
     @Binding var selectedCategory: Category
@@ -65,14 +65,14 @@ struct CategoryTapBar: View {
 
 #Preview {
     @Previewable @State var selectedCategory:
-        CategoryTapBar.Category = .home
+        CategoryTabBar.Category = .home
 
     HStack(spacing: 0) {
         ForEach(
-            CategoryTapBar.Category.allCases,
+            CategoryTabBar.Category.allCases,
             id: \.self
         ) { category in
-            CategoryTapBar(
+            CategoryTabBar(
                 category: category,
                 selectedCategory: $selectedCategory
             )
