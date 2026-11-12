@@ -16,7 +16,7 @@ struct NewTag: View {
             .padding(borderWidth)
             .padding(.horizontal, 2)
             .foregroundStyle(.daisoBlack)
-            .border(Color.black, width: borderWidth)
+            .border(.daisoBlack, width: borderWidth)
     }
 }
 

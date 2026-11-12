@@ -13,13 +13,13 @@ struct SearchBarLarge: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 2)
-                .fill(Color(.grey1))
+                .fill(.grey1)
 
             HStack(spacing: 8) {
                 Toggle()
 
                 Rectangle()
-                    .fill(Color(.grey2))
+                    .fill(.grey2)
                     .frame(width: 1, height: 16)
 
                 HStack(spacing: 10) {
@@ -27,10 +27,10 @@ struct SearchBarLarge: View {
                         "",
                         text: $text,
                         prompt: Text("매장, 지역 검색")
-                            .foregroundStyle(Color(.grey4))
+                            .foregroundStyle(.grey4)
                     )
                     .typography(.body_m_14)
-                    .foregroundStyle(Color(.grey10))
+                    .foregroundStyle(.grey10)
                     .frame(maxWidth: .infinity)
 
                     Button {

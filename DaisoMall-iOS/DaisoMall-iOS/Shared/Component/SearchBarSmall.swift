@@ -16,10 +16,10 @@ struct SearchBarSmall: View {
                     "",
                     text: $text,
                     prompt: Text("매장, 지역 검색")
-                        .foregroundStyle(Color(.grey4))
+                        .foregroundStyle(.grey4)
                 )
                 .typography(.body_m_14)
-                .foregroundStyle(Color(.grey10))
+                .foregroundStyle(.grey10)
                 .frame(maxWidth: .infinity)
 
                 Image(.icSearch)
@@ -31,13 +31,13 @@ struct SearchBarSmall: View {
             .frame(maxWidth: .infinity)
             .frame(height: 40)
             .background(
-                Color.white,
+                .daisoWhite,
                 in: RoundedRectangle(cornerRadius: 2)
             )
             .overlay {
                 RoundedRectangle(cornerRadius: 2)
                     .strokeBorder(
-                        Color(.grey3),
+                        .grey3,
                         lineWidth: 1
                     )
             }

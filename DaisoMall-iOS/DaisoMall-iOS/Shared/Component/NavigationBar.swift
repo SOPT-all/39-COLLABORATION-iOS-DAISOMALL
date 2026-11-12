@@ -24,7 +24,7 @@ struct NavigationBar: View {
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
         .frame(height: 52)
-        .background(Color.daisoWhite)
+        .background(.daisoWhite)
     }
 
     private func navigationItem(
@@ -37,7 +37,7 @@ struct NavigationBar: View {
                 tab.icon
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundStyle(Color(.daisoBlack))
+                    .foregroundStyle(.daisoBlack)
                     .frame(width: 24, height: 24)
 
                 Text(tab.title)
@@ -46,7 +46,7 @@ struct NavigationBar: View {
                             ? .caption_b_10
                         : .caption_m_10
                     )
-                    .foregroundStyle(Color(.daisoBlack))
+                    .foregroundStyle(.daisoBlack)
             }
             .frame(width: 40, height: 36)
         }
