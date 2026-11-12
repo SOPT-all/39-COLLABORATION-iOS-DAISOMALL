@@ -33,6 +33,7 @@ struct PurchaseOptionButton: View {
                     .typography(.body_m_12)
                     .foregroundStyle(titleColor)
             }
+            .frame(maxWidth: .infinity)
             .padding(.horizontal, 16)
             .padding(.vertical, 4)
             .padding(borderWidth)
@@ -109,6 +110,12 @@ struct PurchaseOptionButton: View {
             isEnabled: false
         ) {}
         PurchaseOptionButton(title: "재입고알림", icon: .bell20, style: .blackLine) {}
+        PurchaseOptionButton(title: "재입고알림", icon: .bell20, style: .blackLine) {}
+            .padding(.horizontal, 40)
+        PurchaseOptionButton(title: "매장픽업", icon: .icShoppingbagSmall, style: .redFilled) {}
+            .frame(width: 247)
+        PurchaseOptionButton(title: "온라인 구매", icon: .icShoppingbagSmall, style: .redLine) {}
+            .fixedSize()
     }
     .padding()
 }

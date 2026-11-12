@@ -25,6 +25,7 @@ struct ProductActionButton: View {
                     .typography(.body_sb_12)
                     .foregroundStyle(.grey9)
             }
+            .frame(maxWidth: .infinity)
             .padding(.horizontal, 16)
             .padding(.vertical, 4)
             .padding(borderWidth)
@@ -39,9 +40,16 @@ struct ProductActionButton: View {
 }
 
 #Preview {
-    HStack(alignment: .center, spacing: 11) {
-        ProductActionButton(title: "담기", icon: .icAvailablestores) {}
+    VStack(alignment: .leading, spacing: 12) {
+        HStack(alignment: .center, spacing: 11) {
+            ProductActionButton(title: "담기", icon: .icAvailablestores) {}
+            ProductActionButton(title: "구매가능 매장찾기", icon: .icAvailablestores) {}
+        }
         ProductActionButton(title: "구매가능 매장찾기", icon: .icAvailablestores) {}
+        ProductActionButton(title: "구매가능 매장찾기", icon: .icAvailablestores) {}
+            .padding(.horizontal, 40)
+        ProductActionButton(title: "담기", icon: .icAvailablestores) {}
+            .fixedSize()
     }
     .padding()
 }
