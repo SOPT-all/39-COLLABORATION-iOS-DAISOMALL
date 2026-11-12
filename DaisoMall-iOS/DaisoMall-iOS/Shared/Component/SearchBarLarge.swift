@@ -16,7 +16,7 @@ struct SearchBarLarge: View {
                 .fill(.grey1)
 
             HStack(spacing: 8) {
-                Toggle()
+                SearchPlaceToggle()
 
                 Rectangle()
                     .fill(.grey2)
