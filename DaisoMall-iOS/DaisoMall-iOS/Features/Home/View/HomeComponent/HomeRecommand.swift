@@ -50,7 +50,9 @@ struct HomeRecommand: View {
                         .typography(.body_b_14)
                         .foregroundStyle(.daisoBlack)
                     
-                    NewTag()
+                    if product.isNew {
+                        NewTag()
+                    }
                 }
                 ///제목
                 Text(product.name)
