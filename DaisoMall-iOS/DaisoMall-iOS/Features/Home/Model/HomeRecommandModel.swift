@@ -15,6 +15,7 @@ struct HomeRecommandModel: Identifiable {
     let name: String
     let rating: ImageResource
     let reviewCount: Int
+    var isLiked: Bool
 }
 
 extension HomeRecommandModel {
@@ -25,7 +26,8 @@ extension HomeRecommandModel {
             isNew: true,
             name: "[화잘먹/80매]마미케어 바다포도 스킨팩",
             rating: .icStar,
-            reviewCount: 70
+            reviewCount: 70,
+            isLiked: false
         ),
         HomeRecommandModel(
             image: .imgRecommanditem2,
@@ -33,7 +35,8 @@ extension HomeRecommandModel {
             isNew: false,
             name: "[01라이트]본셉 비타씨에센스비비 30ml",
             rating: .icStar,
-            reviewCount: 70
+            reviewCount: 70,
+            isLiked: false
         ),
         HomeRecommandModel(
             image: .imgRecommanditem3,
@@ -41,7 +44,8 @@ extension HomeRecommandModel {
             isNew: true,
             name: "오오티디 랩 하트 스팟패치 24매입",
             rating: .icStar,
-            reviewCount: 70
+            reviewCount: 70,
+            isLiked: false
         ),
         HomeRecommandModel(
             image: .imgRecommanditem4,
@@ -49,7 +53,8 @@ extension HomeRecommandModel {
             isNew: true,
             name: "후시덤 흔적 리페어 캡슐 크림 60 g",
             rating: .icStar,
-            reviewCount: 70
+            reviewCount: 70,
+            isLiked: false
         )
     ]
 }

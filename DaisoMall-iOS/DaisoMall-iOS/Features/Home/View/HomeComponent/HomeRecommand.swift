@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HomeRecommand: View {
-    let product: HomeRecommandModel
-    @State private var isLiked = false
+    @Binding var product: HomeRecommandModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 6) {
@@ -28,10 +27,10 @@ struct HomeRecommand: View {
                 }
                 
                 Button {
-                    isLiked.toggle()
+                    product.isLiked.toggle()
                 } label: {
                     Image(
-                        isLiked
+                        product.isLiked
                         ? .heartActive
                         : .heart
                     )
@@ -77,5 +76,10 @@ struct HomeRecommand: View {
 }
 
 #Preview {
-    HomeRecommand(product: HomeRecommandModel.products[0])
+    @Previewable @State var product =
+        HomeRecommandModel.products[0]
+
+    HomeRecommand(
+        product: $product
+    )
 }
