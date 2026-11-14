@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct BannerPageTag: View {
-    let currentPage: Int = 1
-    let totalPage: Int = 13
+    let currentPage: Int
+    let totalPage: Int
     
     var body: some View {
         HStack(alignment: .center, spacing: 3) {
@@ -29,5 +29,5 @@ struct BannerPageTag: View {
 }
 
 #Preview {
-    BannerPageTag()
+    BannerPageTag(currentPage: 1, totalPage: 13)
 }
