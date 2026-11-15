@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeRecommandModel: Identifiable {
+struct HomeRecommendModel: Identifiable {
     let id = UUID()
     let image: ImageResource?
     let price: Int
@@ -18,9 +18,9 @@ struct HomeRecommandModel: Identifiable {
     var isLiked: Bool
 }
 
-extension HomeRecommandModel {
-    static  let products: [HomeRecommandModel] = [
-        HomeRecommandModel(
+extension HomeRecommendModel {
+    static  let products: [HomeRecommendModel] = [
+        HomeRecommendModel(
             image: .imgRecommanditem1,
             price: 5000,
             isNew: true,
@@ -29,7 +29,7 @@ extension HomeRecommandModel {
             reviewCount: 70,
             isLiked: false
         ),
-        HomeRecommandModel(
+        HomeRecommendModel(
             image: .imgRecommanditem2,
             price: 5000,
             isNew: false,
@@ -38,7 +38,7 @@ extension HomeRecommandModel {
             reviewCount: 70,
             isLiked: false
         ),
-        HomeRecommandModel(
+        HomeRecommendModel(
             image: .imgRecommanditem3,
             price: 5000,
             isNew: true,
@@ -47,7 +47,7 @@ extension HomeRecommandModel {
             reviewCount: 70,
             isLiked: false
         ),
-        HomeRecommandModel(
+        HomeRecommendModel(
             image: .imgRecommanditem4,
             price: 5000,
             isNew: true,

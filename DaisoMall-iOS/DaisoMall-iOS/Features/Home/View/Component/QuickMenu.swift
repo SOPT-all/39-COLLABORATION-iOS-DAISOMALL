@@ -9,11 +9,11 @@ import SwiftUI
 
 struct QuickMenu: View {
     let style: Style
-    let onTap: (Style) -> Void
+    //let onTap: () -> Void
     
     var body: some View {
         Button {
-            onTap(style)
+            //onTap()
         } label: {
             VStack(alignment: .center, spacing: 8) {
                 Image(style.image)
@@ -38,7 +38,7 @@ struct QuickMenu: View {
         var title: String {
             switch self {
             case .hotItem:
-            return "다이소핫템"
+                return "다이소핫템"
             case .ranking:
                 return "랭킹"
             case .promotion:
@@ -71,7 +71,5 @@ struct QuickMenu: View {
 
 
 #Preview {
-    QuickMenu(
-        style: .hotItem,
-        onTap: { _ in})
+    QuickMenu(style: .hotItem)
 }

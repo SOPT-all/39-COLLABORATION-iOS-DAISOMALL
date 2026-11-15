@@ -14,15 +14,10 @@ struct MainBanner: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            if let image = banner.image {
-                Image(image)
-                    .resizable()
-                    .scaledToFill()
-            } else {
-                Image(.imgBigbanner0)
-                    .resizable()
-                    .scaledToFill()
-            }
+            Image(banner.image != nil
+                  ? banner.image! : .imgBigbanner0 )
+                .resizable()
+                .scaledToFill()
 
             HStack(alignment: .bottom, spacing: 8) {
                 VStack(alignment: .leading, spacing: 8) {

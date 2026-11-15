@@ -1,5 +1,5 @@
 //
-//  CategoryTabBar.swift
+//  CategoryTab.swift
 //  DaisoMall-iOS
 //
 //  Created by BY on 11/12/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoryTabBar: View {
+struct CategoryTab: View {
     let category: Category
 
     @Binding var selectedCategory: Category
@@ -22,17 +22,11 @@ struct CategoryTabBar: View {
         } label: {
             Text(category.title)
                 .typography(.body_m_14)
-                .foregroundStyle(
-                    isSelected
-                        ? .daisoWhite
-                        : .daisoBlack
-                )
+                .foregroundStyle(isSelected ? .daisoWhite : .daisoBlack)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 8)
                 .background(
-                    isSelected
-                        ? .daisoBlack
-                        : .daisoWhite,
+                    isSelected ? .daisoBlack : .daisoWhite,
                     in: RoundedRectangle(cornerRadius: 18)
                 )
         }
@@ -49,15 +43,15 @@ struct CategoryTabBar: View {
         var title: String {
             switch self {
             case .home:
-                "홈"
+                return "홈"
             case .beautyAndHealth:
-                "뷰티&헬스"
+                return "뷰티&헬스"
             case .fashion:
-                "패션"
+                return "패션"
             case .newItem:
-                "신상"
+                return "신상"
             case .membership:
-                "멤버십"
+                return "멤버십"
             }
         }
     }
@@ -65,14 +59,11 @@ struct CategoryTabBar: View {
 
 #Preview {
     @Previewable @State var selectedCategory:
-        CategoryTabBar.Category = .home
+        CategoryTab.Category = .home
 
     HStack(spacing: 0) {
-        ForEach(
-            CategoryTabBar.Category.allCases,
-            id: \.self
-        ) { category in
-            CategoryTabBar(
+        ForEach( CategoryTab.Category.allCases, id: \.self) { category in
+            CategoryTab(
                 category: category,
                 selectedCategory: $selectedCategory
             )
