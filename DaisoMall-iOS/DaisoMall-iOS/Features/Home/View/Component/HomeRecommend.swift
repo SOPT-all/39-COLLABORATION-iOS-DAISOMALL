@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct HomeRecommend: View {
-    @Binding var product: HomeRecommendModel
+    var product: HomeRecommendModel
+    let onLikeTap: () -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 6) {
@@ -20,7 +21,7 @@ struct HomeRecommend: View {
                 .frame(maxWidth: .infinity)
                 
                 Button {
-                    product.isLiked.toggle()
+                    onLikeTap()
                 } label: {
                     Image(product.isLiked ? .heartActive : .heart)
                     .resizable()
@@ -66,5 +67,5 @@ struct HomeRecommend: View {
     @Previewable @State var product =
         HomeRecommendModel.products[0]
 
-    HomeRecommend(product: $product)
+    HomeRecommend(product: product, onLikeTap: {})
 }

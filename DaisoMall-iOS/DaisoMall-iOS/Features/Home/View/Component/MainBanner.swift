@@ -28,9 +28,8 @@ struct MainBanner: View {
                         .typography(.body_m_16)
                 }
                 .foregroundStyle(.daisoWhite)
-                .frame(maxWidth: .infinity, alignment: .leading) ///정렬 안할 시, .center로 정렬됨
+                .frame(maxWidth: .infinity, alignment: .leading) //정렬 안할 시, .center로 정렬됨
                 
-                /// 페이지 태그
                 BannerPageTag(currentPage: currentPage, totalPage: totalPage)
             }
             .padding(20)
@@ -41,5 +40,5 @@ struct MainBanner: View {
 }
 
 #Preview {
-    MainBanner(banner: MainBannerModel.banners[0], currentPage: 1, totalPage: 13)
+    MainBanner(banner: MainBannerModel.dummyList[0], currentPage: 1, totalPage: 13)
 }

@@ -10,8 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var selectedCategory: CategoryTab.Category = .home
     @State private var searchText = ""
-    let bannerOrder = [1, 0, 2]
-    @State private var products = HomeRecommendModel.products
+    @State private var vm = HomeViewModel()
     
     var body: some View {
         VStack(alignment: .center) {
@@ -50,19 +49,18 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .center, spacing: 20) {
                     HStack(spacing: 4) {
-                        ForEach(bannerOrder, id: \.self) { index in
+                        ForEach(vm.banners, id: \.self) { banner in
                             MainBanner(
-                             banner: MainBannerModel.banners[index],
-                             currentPage: 1,
-                             totalPage: 13
-                            )
+                                banner: banner,
+                                currentPage: 1,
+                                totalPage: 13)
                         }
                     }
 
                     Group {
                         HStack(spacing: 0) {
                             ForEach(QuickMenu.Style.allCases,id: \.self) { style in
-                                QuickMenu(style: style) {_ in}
+                                QuickMenu(style: style)
                                 
                                 if style != QuickMenu.Style.allCases.last {
                                     Spacer()
@@ -83,8 +81,12 @@ struct HomeView: View {
                         .typography(.title_b_18)
                         .foregroundStyle(.daisoBlack)
                     HStack(alignment: .top, spacing:4) {
-                        ForEach($products) { $product in
-                            HomeRecommend(product: $product)
+                        ForEach(vm.recommendItems) { product in
+                            HomeRecommend(
+                                product: product,
+                                onLikeTap: {
+                                vm.toggleLike(id: product.id)
+                                })
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)

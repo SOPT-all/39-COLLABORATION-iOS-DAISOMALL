@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainBannerModel: Identifiable {
+struct MainBannerModel: Identifiable, Hashable{
     let id = UUID()
     let image: ImageResource?
     let title: String
@@ -15,16 +15,16 @@ struct MainBannerModel: Identifiable {
 }
 
 extension MainBannerModel {
-    static let banners: [MainBannerModel] = [
-        MainBannerModel(
-            image: .imgBigbanner1,
-            title: "10월 4주차\n다이소 신상",
-            description: "이번주 핫한 신상품을 소개합니다"
-        ),
+    static let dummyList: [MainBannerModel] = [
         MainBannerModel(
             image: .imgBigbanner2,
             title: "",
             description: ""
+        ),
+        MainBannerModel(
+            image: .imgBigbanner1,
+            title: "10월 4주차\n다이소 신상",
+            description: "이번주 핫한 신상품을 소개합니다"
         ),
         MainBannerModel(
             image: .imgBigbanner3,
@@ -33,4 +33,3 @@ extension MainBannerModel {
         )
     ]
 }
-

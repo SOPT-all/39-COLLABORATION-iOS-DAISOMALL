@@ -26,7 +26,6 @@
             "Core/Network/Base/.gitkeep",
             "Core/Network/DTO/.gitkeep",
             "Core/Network/Service/.gitkeep",
-            "Features/Home/ViewModel/.gitkeep",
             "Info.plist",
             "Shared/DesignSystem/.gitkeep",
           ],
