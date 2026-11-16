@@ -19,7 +19,11 @@ struct ProductListView: View {
             
             optionBar
         }
-        productList
+        .padding(.bottom, 20)
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            productList
+        }
     }
     
     private var searchBarSection: some View {
@@ -91,7 +95,6 @@ struct ProductListView: View {
     }
     
     private var productList: some View {
-        ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center, spacing: 20) {
                 ForEach(vm.products) { product in
                     ProductCard(product: product) {
@@ -104,7 +107,6 @@ struct ProductListView: View {
                     }
                 }
             }
-        }
     }
 }
 
