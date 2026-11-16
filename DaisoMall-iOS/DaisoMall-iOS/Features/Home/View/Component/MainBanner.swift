@@ -14,8 +14,7 @@ struct MainBanner: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image(banner.image != nil
-                  ? banner.image! : .imgBigbanner0 )
+            Image(banner.image ?? .imgBigbanner0)
                 .resizable()
                 .scaledToFill()
 

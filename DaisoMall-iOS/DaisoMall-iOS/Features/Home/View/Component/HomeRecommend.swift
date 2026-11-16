@@ -14,8 +14,7 @@ struct HomeRecommend: View {
     var body: some View {
         VStack(alignment: .center, spacing: 6) {
             ZStack(alignment: .bottomTrailing) {
-                Image(product.image != nil
-                        ? product.image! : .imgRecommanditem0 )
+                Image(product.image ?? .imgRecommanditem0)
                 .resizable()
                 .frame(height: 144)
                 .frame(maxWidth: .infinity)
@@ -38,7 +37,7 @@ struct HomeRecommend: View {
                         .typography(.body_b_14)
                         .foregroundStyle(.daisoBlack)
                     
-                    if product.isNew {NewTag()}
+                    if product.isNew { NewTag() }
                 }
                 
                 Text(product.name)
