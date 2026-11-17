@@ -26,7 +26,7 @@ struct SearchBarLarge: View {
                     TextField(
                         "",
                         text: $text,
-                        prompt: Text("매장, 지역 검색")
+                        prompt: Text("상품, 품번, 브랜드 검색")
                             .foregroundStyle(.grey4)
                     )
                     .typography(.body_m_14)
