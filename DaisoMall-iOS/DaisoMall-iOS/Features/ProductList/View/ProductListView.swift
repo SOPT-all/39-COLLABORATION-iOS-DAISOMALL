@@ -12,17 +12,19 @@ struct ProductListView: View {
     @State private var vm = ProductListViewModel()
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            searchBarSection
+        VStack(alignment: .center, spacing: 0) {
+            VStack(alignment: .leading, spacing: 10) {
+                searchBarSection
+                
+                categoryBar
+                
+                optionBar
+            }
+            .padding(.bottom, 20)
             
-            categoryBar
-            
-            optionBar
-        }
-        .padding(.bottom, 20)
-        
-        ScrollView(.vertical, showsIndicators: false) {
-            productList
+            ScrollView(.vertical, showsIndicators: false) {
+                productList
+            }
         }
     }
     
