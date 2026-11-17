@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StockView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var vm = StockViewModel()
     @State private var searchText = ""
 
@@ -38,11 +39,13 @@ struct StockView: View {
             .padding(.top, 10)
         }
         .background(.daisoWhite)
+        .toolbar(.hidden, for: .navigationBar)
     }
 
     private var topBar: some View {
         HStack(alignment: .center, spacing: 10) {
             Button {
+                dismiss()
             } label: {
                 Image(.icArrowLeft)
             }
