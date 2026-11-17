@@ -12,6 +12,8 @@ struct HomeView: View {
     @State private var searchText = ""
     @State private var selectedCategory: CategoryTab.Category = .home
     
+    let onSearch: (String) -> Void
+    
     var body: some View {
         VStack(alignment: .center) {
             homeHeader
@@ -55,7 +57,7 @@ struct HomeView: View {
                 Spacer()
             }
             .padding(.vertical, 8)
-            SearchBarLarge(text: $searchText, onSearch: { _ in })
+            SearchBarLarge( text: $searchText, onSearch: onSearch )
         }
     }
     
@@ -110,5 +112,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView { keyword in
+        print("검색어:", keyword)
+    }
 }
