@@ -64,8 +64,6 @@ struct ProductCard: View {
             
             HStack(spacing: 6) {
                 Image(product.stars)
-                    .resizable()
-                    .frame(width: 60, height: 12)
                 
                 Text(product.reviewCounts)
                     .typography(.caption_r_10)

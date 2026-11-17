@@ -73,10 +73,7 @@ struct ProductListView: View {
     
     private var optionBar: some View {
         HStack(spacing: 0) {
-            RoundedRectangle(cornerRadius: 1)
-                .fill(.daisoWhite)
-                .stroke(.grey3, lineWidth: 1)
-                .frame(width: 18, height: 18)
+            Image(.icCheckBox)
                 .padding(.trailing, 6)
             
             Text("품절제외")
