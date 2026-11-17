@@ -34,7 +34,12 @@ struct NavigationBar: View {
             selectedTab = tab
         } label: {
             VStack(spacing: 0) {
-                tab.icon
+                let icon: Image = (
+                    tab == .home && selectedTab == tab
+                    ? Image(.icHomePress) : tab.icon
+                )
+                
+                icon
                     .resizable()
                     .renderingMode(.template)
                     .foregroundStyle(.daisoBlack)
