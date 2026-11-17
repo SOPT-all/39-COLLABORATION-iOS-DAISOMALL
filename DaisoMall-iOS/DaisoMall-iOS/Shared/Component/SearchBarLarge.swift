@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchBarLarge: View {
     @Binding var text: String
+    
+    let onSearch: (String) -> Void
 
     var body: some View {
         ZStack {
@@ -32,9 +34,10 @@ struct SearchBarLarge: View {
                     .typography(.body_m_14)
                     .foregroundStyle(.grey10)
                     .frame(maxWidth: .infinity)
+                    .onSubmit { submitSearch() }
 
                     Button {
-                        // 추후에 동작 추가 예정
+                        submitSearch()
                     } label: {
                         Image(.icSearch)
                             .resizable()
@@ -49,10 +52,20 @@ struct SearchBarLarge: View {
         .frame(maxWidth: .infinity)
         .frame(height: 46)
     }
+    
+    private func submitSearch() {
+        let keyword = text.trimmingCharacters(
+            in: .whitespaces
+        )
+        
+        guard !keyword.isEmpty else { return }
+        
+        onSearch(keyword)
+    }
 }
 
 #Preview {
     SearchBarLarge(
-            text: .constant("")
+        text: .constant(""), onSearch: { _ in }
     )
 }

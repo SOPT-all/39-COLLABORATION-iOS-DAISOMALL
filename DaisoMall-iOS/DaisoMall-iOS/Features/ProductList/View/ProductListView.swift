@@ -41,7 +41,7 @@ struct ProductListView: View {
                     .frame(width: 24, height: 24)
                     .padding(10)
             }
-            SearchBarLarge(text: $searchText)
+            SearchBarLarge(text: $searchText, onSearch: { _ in })
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)

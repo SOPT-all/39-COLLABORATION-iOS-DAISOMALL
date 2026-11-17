@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedCategory: CategoryTab.Category = .home
-    @State private var searchText = ""
     @State private var vm = HomeViewModel()
+    @State private var searchText = ""
+    @State private var selectedCategory: CategoryTab.Category = .home
     
     var body: some View {
         VStack(alignment: .center) {
@@ -55,7 +55,7 @@ struct HomeView: View {
                 Spacer()
             }
             .padding(.vertical, 8)
-            SearchBarLarge(text: $searchText)
+            SearchBarLarge(text: $searchText, onSearch: { _ in })
         }
     }
     
