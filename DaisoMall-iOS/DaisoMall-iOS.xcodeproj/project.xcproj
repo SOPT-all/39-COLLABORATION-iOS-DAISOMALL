@@ -1,8 +1,8 @@
 {
   "default-configuration": "Release",
   "configurations": [
-    "Debug",
-    "Release",
+    { "name": "Debug", "file": { "anchor": "DaisoMall-iOS", "relative-path": "Config.xcconfig" } },
+    { "name": "Release", "file": { "anchor": "DaisoMall-iOS", "relative-path": "Config.xcconfig" } },
   ],
   "localizations": {
     "development": "ko",
@@ -11,6 +11,15 @@
       "en",
     ],
   },
+  "packages": [
+    {
+      "kind": "remote",
+      "repository": "https://github.com/onevcat/Kingfisher.git",
+      "version": {
+        "up-to-next-major-version": "8.16.0",
+      },
+    },
+  ],
   "files": [
     {
       "kind": "folder",
@@ -22,8 +31,8 @@
         {
           "target": "DaisoMall-iOS",
           "exclusions": [
+            "Config.xcconfig",
             "Core/Navigation/.gitkeep",
-            "Core/Network/Base/.gitkeep",
             "Core/Network/DTO/.gitkeep",
             "Core/Network/Service/.gitkeep",
             "Info.plist",
@@ -45,10 +54,21 @@
       "id": "CA05656C309A4D370024C971",
       "product": "Products/DaisoMall-iOS.app",
       "product-type": "application",
+      "specialized-configurations": [
+        { "name": "Debug", "file": { "anchor": "DaisoMall-iOS", "relative-path": "Config.xcconfig" } },
+        { "name": "Release", "file": { "anchor": "DaisoMall-iOS", "relative-path": "Config.xcconfig" } },
+      ],
       "build-phases": [
         "compile-sources",
         "frameworks",
         "resources",
+      ],
+      "package-product-members": [
+        {
+          "package": "Kingfisher",
+          "product-name": "Kingfisher",
+          "build-phase": { "build-phase": "frameworks" },
+        },
       ],
       "build-settings": {
         "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
