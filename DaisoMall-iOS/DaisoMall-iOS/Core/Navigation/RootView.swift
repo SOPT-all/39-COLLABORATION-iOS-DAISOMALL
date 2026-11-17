@@ -41,7 +41,13 @@ struct RootView: View {
         case .category:
             Text("카테고리")
         case .stock:
-            ProductListView(searchText: "")
+            ProductListView (
+                searchText: "",
+                onBack: {
+                    selectedTab = .home
+                },
+                onSearch: { _ in }
+            )
         case .discover:
             Text("발견")
         case .my:
@@ -55,8 +61,17 @@ struct RootView: View {
         case .stock:
             StockView()
         case .list(let keyword):
-            ProductListView(searchText: keyword)
-                .toolbar(.hidden, for: .navigationBar)
+            ProductListView(
+                searchText: keyword,
+                onBack: {
+                    path.removeLast()
+                },
+                onSearch: { newSearchText in
+                    path = [
+                        .list(keyword: newSearchText)
+                    ]
+                }
+            )
         }
     }
 }

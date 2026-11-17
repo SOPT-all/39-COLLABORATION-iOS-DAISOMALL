@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ProductListView: View {
-    @Environment(\.dismiss) private var dismiss
     @State var searchText: String
     @State private var vm = ProductListViewModel()
+    
+    let onBack: () -> Void
+    let onSearch: (String) -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -29,19 +31,20 @@ struct ProductListView: View {
                     .padding(.top, 20)
             }
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
     
     private var searchBarSection: some View {
         HStack(spacing: 0) {
             Button {
-                dismiss()
+                onBack()
             } label: {
                 Image(.icArrowLeft)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .padding(10)
             }
-            SearchBarLarge(text: $searchText, onSearch: { _ in })
+            SearchBarLarge( text: $searchText, onSearch: onSearch )
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
@@ -118,5 +121,9 @@ struct ProductListView: View {
 }
 
 #Preview {
-    ProductListView(searchText: "")
+    ProductListView(
+        searchText: "",
+        onBack: { },
+        onSearch: { _ in }
+    )
 }
