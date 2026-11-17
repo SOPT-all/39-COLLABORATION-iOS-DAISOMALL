@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductListView: View {
+    @Environment(\.dismiss) private var dismiss
     @State var searchText: String
     @State private var vm = ProductListViewModel()
     
@@ -33,7 +34,7 @@ struct ProductListView: View {
     private var searchBarSection: some View {
         HStack(spacing: 0) {
             Button {
-                //뒤로가기 액션 추가 에정
+                dismiss()
             } label: {
                 Image(.icArrowLeft)
                     .resizable()
