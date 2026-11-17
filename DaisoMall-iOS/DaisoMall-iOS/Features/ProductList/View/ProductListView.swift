@@ -32,10 +32,14 @@ struct ProductListView: View {
     
     private var searchBarSection: some View {
         HStack(spacing: 0) {
-            Image(.icArrowLeft)
-                .resizable()
-                .frame(width: 24, height: 24)
-                .padding(10)
+            Button {
+                //
+            } label: {
+                Image(.icArrowLeft)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .padding(10)
+            }
             SearchBarLarge(text: $searchText)
         }
         .padding(.vertical, 10)
@@ -98,18 +102,18 @@ struct ProductListView: View {
     }
     
     private var productList: some View {
-            LazyVStack(alignment: .center, spacing: 20) {
-                ForEach(vm.products) { product in
-                    ProductCard(product: product) {
-                        vm.toggleLike(id: product.id)
-                    }
-                    if product.id != vm.products.last?.id {
-                        Rectangle()
-                            .fill(.grey1)
-                            .frame(height: 1)
-                    }
+        LazyVStack(alignment: .center, spacing: 20) {
+            ForEach(vm.products) { product in
+                ProductCard(product: product) {
+                    vm.toggleLike(id: product.id)
+                }
+                if product.id != vm.products.last?.id {
+                    Rectangle()
+                        .fill(.grey1)
+                        .frame(height: 1)
                 }
             }
+        }
     }
 }
 
