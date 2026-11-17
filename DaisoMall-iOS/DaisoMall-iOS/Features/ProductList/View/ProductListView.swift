@@ -13,17 +13,19 @@ struct ProductListView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 0) {
                 searchBarSection
+                    .padding(.bottom, 10)
                 
                 categoryBar
+                    .padding(.bottom, 20)
                 
                 optionBar
             }
-            .padding(.bottom, 20)
             
             ScrollView(.vertical, showsIndicators: false) {
                 productList
+                    .padding(.top, 20)
             }
         }
     }
@@ -62,7 +64,6 @@ struct ProductListView: View {
             Dropdown(title: "카테고리", style: .filled)
             Dropdown(title: "별점", style: .filled)
         }
-        .padding(.bottom, 20)
         .padding(.leading, 20)
     }
     
