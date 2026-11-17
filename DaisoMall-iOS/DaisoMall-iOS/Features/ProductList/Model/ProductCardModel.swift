@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductCardModel: Identifiable {
     let id = UUID()
     let image: ImageResource
-    let price: Int
+    let price: String
     let name: String
     let productNumber: String
     let stars: ImageResource
@@ -22,7 +22,7 @@ extension ProductCardModel {
     static let dummyList: [ProductCardModel] = [
         ProductCardModel(
             image: .imgCosmetic1,
-            price: 1000,
+            price: "1,000",
             name: "[생기충전]VT PDRN 톤온 젤리 시트 마스크 1매입",
             productNumber: "1075034",
             stars: .star5,
@@ -31,7 +31,7 @@ extension ProductCardModel {
         ),
         ProductCardModel(
             image: .imgCosmetic2,
-            price: 1000,
+            price: "1000",
             name: "[탄력케어]마미케어 콜라겐 마스크 1매입",
             productNumber: "1075034",
             stars: .star5,

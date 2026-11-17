@@ -37,15 +37,21 @@ struct ProductCard: View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 4) {
-                    Text("\(product.price)원")
-                        .typography(.title_b_18)
-                        .foregroundStyle(.grey10)
+                    HStack(spacing: 0) {
+                        Text(product.price)
+                            .typography(.title_b_18)
+                        Text("원")
+                            .typography(.body_b_16)
+                    }
+                    .foregroundStyle(.grey10)
+                    
                     NewTag()
                 }
                 
                 Text("\(product.name)")
                     .typography(.body_sb_12)
                     .foregroundStyle(.grey10)
+                    .lineLimit(2)
                 
                 HStack(spacing: 2) {
                     Text("품번")
@@ -54,7 +60,6 @@ struct ProductCard: View {
                 .typography(.caption_m_10)
                 .foregroundStyle(.grey5)
             }
-            .frame(height: 52)
             .padding(.bottom, 7)
             
             HStack(spacing: 6) {
