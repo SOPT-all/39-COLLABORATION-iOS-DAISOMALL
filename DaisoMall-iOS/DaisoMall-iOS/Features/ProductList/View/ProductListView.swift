@@ -33,7 +33,7 @@ struct ProductListView: View {
     private var searchBarSection: some View {
         HStack(spacing: 0) {
             Button {
-                //
+                //뒤로가기 액션 추가 에정
             } label: {
                 Image(.icArrowLeft)
                     .resizable()
@@ -104,6 +104,8 @@ struct ProductListView: View {
                 ProductCard(product: product) {
                     vm.toggleLike(id: product.id)
                 }
+                .padding(.horizontal, 20)
+                
                 if product.id != vm.products.last?.id {
                     Rectangle()
                         .fill(.grey1)

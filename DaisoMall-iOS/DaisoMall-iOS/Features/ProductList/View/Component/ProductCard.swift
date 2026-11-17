@@ -30,7 +30,7 @@ struct ProductCard: View {
             
             productInfo
         }
-        .frame(width: 335, height: 148)
+        .frame(height: 148)
     }
     
     private var productInfo: some View {
