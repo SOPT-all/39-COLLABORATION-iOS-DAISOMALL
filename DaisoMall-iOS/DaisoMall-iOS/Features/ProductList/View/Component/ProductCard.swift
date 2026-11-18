@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProductCard: View {
     let product: ProductCardModel
@@ -14,7 +15,7 @@ struct ProductCard: View {
     var body: some View {
         HStack(spacing: 14) {
             ZStack(alignment: .bottomTrailing) {
-                Image(product.image)
+                KFImage(product.image)
                     .resizable()
                     .frame(width: 112, height: 148)
                 
@@ -63,7 +64,7 @@ struct ProductCard: View {
             .padding(.bottom, 7)
             
             HStack(spacing: 6) {
-                Image(product.stars)
+                Image(.star5)
                 
                 Text(product.reviewCounts)
                     .typography(.caption_r_10)
@@ -79,7 +80,15 @@ struct ProductCard: View {
 
 #Preview {
     ProductCard(
-           product: ProductCardModel.dummyList[0],
+        product: ProductCardModel(
+            id: 1,
+            image: nil,
+            price: "1,000",
+            name: "[생기충전]VT PDRN 톤온 젤리 시트 마스크 1매입",
+            productNumber: "1075034",
+            reviewCounts: "9,999+",
+            isLiked: false
+        ),
            onLikeTap: {}
        )
 }
