@@ -9,4 +9,5 @@ import Foundation
 
 enum Route: Hashable {
     case stock(productID: Int)
+    case list(keyword: String)
 }

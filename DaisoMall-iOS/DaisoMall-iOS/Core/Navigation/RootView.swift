@@ -33,11 +33,21 @@ struct RootView: View {
     private var tabContent: some View {
         switch selectedTab {
         case .home:
-            Text("홈")
+            HomeView { keyword in
+                path.append(
+                    .list(keyword: keyword)
+                )
+            }
         case .category:
             Text("카테고리")
         case .stock:
-            Text("상품 조회")
+            ProductListView (
+                searchText: "",
+                onBack: {
+                    selectedTab = .home
+                },
+                onSearch: { _ in }
+            )
         case .discover:
             Text("발견")
         case .my:
@@ -50,6 +60,18 @@ struct RootView: View {
         switch route {
         case .stock:
             StockView()
+        case .list(let keyword):
+            ProductListView(
+                searchText: keyword,
+                onBack: {
+                    path.removeLast()
+                },
+                onSearch: { newSearchText in
+                    path = [
+                        .list(keyword: newSearchText)
+                    ]
+                }
+            )
         }
     }
 }
