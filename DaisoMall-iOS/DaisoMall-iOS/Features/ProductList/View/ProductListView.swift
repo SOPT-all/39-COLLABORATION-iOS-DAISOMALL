@@ -12,7 +12,6 @@ struct ProductListView: View {
     @State private var vm = ProductListViewModel()
     
     let onBack: () -> Void
-    let onSearch: (String) -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -44,7 +43,13 @@ struct ProductListView: View {
                     .frame(width: 24, height: 24)
                     .padding(10)
             }
-            SearchBarLarge( text: $searchText, onSearch: onSearch )
+            SearchBarLarge( text: $searchText ) {
+                keyword in
+                Task {
+                    await vm.fetchProducts(keyword: keyword)
+                }
+            }
+
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
@@ -117,13 +122,15 @@ struct ProductListView: View {
                 }
             }
         }
+        .task {
+            await vm.fetchProducts(keyword: searchText)
+        }
     }
 }
 
 #Preview {
     ProductListView(
         searchText: "",
-        onBack: { },
-        onSearch: { _ in }
+        onBack: { }
     )
 }
