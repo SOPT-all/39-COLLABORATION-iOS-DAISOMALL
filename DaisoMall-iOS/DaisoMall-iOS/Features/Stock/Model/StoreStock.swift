@@ -5,7 +5,7 @@
 //  Created by 성환 on 11/12/26.
 //
 
-import SwiftUI
+import Foundation
 
 struct StoreStock: Identifiable {
     enum BusinessStatus: String {
@@ -21,7 +21,7 @@ struct StoreStock: Identifiable {
 
     let id: Int
     let name: String
-    let image: ImageResource
+    let imageURL: URL?
     let businessStatus: BusinessStatus
     var isBookmarked: Bool
     let distance: String
@@ -36,46 +36,16 @@ struct StoreStock: Identifiable {
 }
 
 extension StoreStock {
-    static let dummyList: [StoreStock] = [
-        StoreStock(
-            id: 201,
-            name: "구로디지털단지역점",
-            image: .imgMarket1,
-            businessStatus: .open,
-            isBookmarked: true,
-            distance: "300m",
-            stockQuantity: 56,
-            isPickupAvailable: true
-        ),
-        StoreStock(
-            id: 202,
-            name: "구로디지털단지역점",
-            image: .imgMarket2,
-            businessStatus: .open,
-            isBookmarked: false,
-            distance: "300m",
-            stockQuantity: 56,
-            isPickupAvailable: true
-        ),
-        StoreStock(
-            id: 203,
-            name: "구로디지털단지역점",
-            image: .imgMarket3,
-            businessStatus: .closed,
-            isBookmarked: false,
-            distance: "1.5km",
-            stockQuantity: 56,
-            isPickupAvailable: false
-        ),
-        StoreStock(
-            id: 204,
-            name: "구로디지털단지역점",
-            image: .imgMarket2,
-            businessStatus: .open,
-            isBookmarked: false,
-            distance: "300m",
-            stockQuantity: 0,
-            isPickupAvailable: true
+    init(dto: StoreStockDTO) {
+        self.init(
+            id: dto.storeId,
+            name: dto.storeName,
+            imageURL: URL(string: dto.imageUrl),
+            businessStatus: BusinessStatus(rawValue: dto.businessStatus) ?? .closed,
+            isBookmarked: dto.bookmarked,
+            distance: dto.distance,
+            stockQuantity: dto.stockQuantity,
+            isPickupAvailable: dto.pickupAvailable
         )
-    ]
+    }
 }

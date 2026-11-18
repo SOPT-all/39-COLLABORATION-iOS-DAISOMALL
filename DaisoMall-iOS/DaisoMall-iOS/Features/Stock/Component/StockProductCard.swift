@@ -5,6 +5,7 @@
 //  Created by 성환 on 11/12/26.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct StockProductCard: View {
@@ -12,7 +13,12 @@ struct StockProductCard: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
-            Image(product.image)
+            KFImage(product.imageURL)
+                .placeholder {
+                    Image(.imgPlaceholder)
+                        .resizable()
+                        .scaledToFill()
+                }
                 .resizable()
                 .scaledToFill()
                 .frame(width: 82, height: 111)
@@ -43,7 +49,7 @@ struct StockProductCard: View {
         VStack(alignment: .leading, spacing: 4) {
             VStack(alignment: .leading, spacing: 4) {
                 HStack(alignment: .center, spacing: 0) {
-                    Text(product.price.formatted())
+                    Text(product.price)
                         .typography(.body_b_14)
 
                     Text("원")
@@ -66,6 +72,14 @@ struct StockProductCard: View {
 }
 
 #Preview {
-    StockProductCard(product: .dummy)
-        .padding(.horizontal, 20)
+    StockProductCard(
+        product: StockProduct(
+            id: 1,
+            imageURL: nil,
+            name: "[화잘먹/80매]마미케어 바다포도 스킨팩",
+            price: "5,000",
+            productNumber: "1075034"
+        )
+    )
+    .padding(.horizontal, 20)
 }

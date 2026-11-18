@@ -13,7 +13,7 @@ struct StoreStockCard: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 6) {
-            StoreCardImage(image: store.image, businessStatus: store.businessStatus)
+            StoreCardImage(imageURL: store.imageURL, businessStatus: store.businessStatus)
 
             VStack(alignment: .leading, spacing: 0) {
                 storeInfo
@@ -93,9 +93,44 @@ struct StoreStockCard: View {
 
 #Preview {
     VStack(spacing: 20) {
-        ForEach(StoreStock.dummyList) { store in
-            StoreStockCard(store: store) {}
-        }
+        StoreStockCard(
+            store: StoreStock(
+                id: 1,
+                name: "구로디지털단지역점",
+                imageURL: nil,
+                businessStatus: .open,
+                isBookmarked: true,
+                distance: "300m",
+                stockQuantity: 56,
+                isPickupAvailable: true
+            )
+        ) {}
+
+        StoreStockCard(
+            store: StoreStock(
+                id: 2,
+                name: "구로디지털단지역점",
+                imageURL: nil,
+                businessStatus: .closed,
+                isBookmarked: false,
+                distance: "1.5km",
+                stockQuantity: 56,
+                isPickupAvailable: false
+            )
+        ) {}
+
+        StoreStockCard(
+            store: StoreStock(
+                id: 3,
+                name: "구로디지털단지역점",
+                imageURL: nil,
+                businessStatus: .open,
+                isBookmarked: false,
+                distance: "300m",
+                stockQuantity: 0,
+                isPickupAvailable: true
+            )
+        ) {}
     }
     .padding(.horizontal, 20)
 }
