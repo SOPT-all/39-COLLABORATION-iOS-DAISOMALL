@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StockView: View {
+    let productID: Int
+
     @Environment(\.dismiss) private var dismiss
     @State private var vm = StockViewModel()
     @State private var searchText = ""
@@ -16,9 +18,11 @@ struct StockView: View {
         VStack(alignment: .leading, spacing: 0) {
             topBar
 
-            StockProductCard(product: vm.product)
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
+            if let product = vm.product {
+                StockProductCard(product: product)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+            }
 
             StoreTabGroup()
                 .padding(.top, 20)
@@ -40,6 +44,9 @@ struct StockView: View {
         }
         .background(.daisoWhite)
         .toolbar(.hidden, for: .navigationBar)
+        .task(id: vm.isSoldOutExcluded) {
+            await vm.fetchStores(productID: productID)
+        }
     }
 
     private var topBar: some View {
@@ -110,7 +117,7 @@ struct StockView: View {
 
     private var storeList: some View {
         LazyVStack(alignment: .leading, spacing: 20) {
-            ForEach(vm.displayedStores) { store in
+            ForEach(vm.stores) { store in
                 StoreStockCard(store: store) {
                     vm.toggleBookmark(id: store.id)
                 }
@@ -121,5 +128,5 @@ struct StockView: View {
 }
 
 #Preview {
-    StockView()
+    StockView(productID: 3)
 }

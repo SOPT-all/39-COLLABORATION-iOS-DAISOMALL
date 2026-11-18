@@ -58,8 +58,8 @@ struct RootView: View {
     @ViewBuilder
     private func destination(_ route: Route) -> some View {
         switch route {
-        case .stock:
-            StockView()
+        case .stock(let productID):
+            StockView(productID: productID)
         case .list(let keyword):
             ProductListView(
                 searchText: keyword,
