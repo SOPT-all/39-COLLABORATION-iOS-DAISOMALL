@@ -10,9 +10,9 @@ import Observation
 
 @Observable
 final class ProductListViewModel {
-    private(set) var products = ProductCardModel.dummyList
+    private(set) var products: [ProductCardModel] = []
     
-    func toggleLike(id: UUID) {
+    func toggleLike(id: Int) {
         guard let index = products.firstIndex(
             where: { $0.id == id }
         ) else {
@@ -20,5 +20,18 @@ final class ProductListViewModel {
         }
         
         products[index].isLiked.toggle()
+    }
+    
+    func fetchProducts(keyword: String?) async {
+        do {
+            let response: ProductListResponseDTO =
+            try await BaseService.shared.request(
+                endPoint: .list(keyword: keyword)
+            )
+            
+            products = response.products.map { data in ProductCardModel(dto: data)}
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

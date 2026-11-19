@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainBannerModel: Identifiable, Hashable{
+struct MainBannerModel: Identifiable, Hashable {
     let id = UUID()
     let image: ImageResource?
     let title: String
