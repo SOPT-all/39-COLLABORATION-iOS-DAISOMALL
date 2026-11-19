@@ -33,7 +33,6 @@
           "exclusions": [
             "Config.xcconfig",
             "Core/Navigation/.gitkeep",
-            "Core/Network/DTO/.gitkeep",
             "Core/Network/Service/.gitkeep",
             "Info.plist",
             "Shared/DesignSystem/.gitkeep",
