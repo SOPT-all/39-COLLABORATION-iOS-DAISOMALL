@@ -12,14 +12,19 @@ import Observation
 final class ProductListViewModel {
     private(set) var products: [ProductCardModel] = []
     
-    func toggleLike(id: Int) {
+    func toggleLike(id: Int) async {
         guard let index = products.firstIndex(
             where: { $0.id == id }
         ) else {
             return
         }
-        
         products[index].isLiked.toggle()
+        
+        do {
+            let response: ProductLikeResponseDTO = try await BaseService.shared.request(endPoint: .liked(id: id), body: ProductLikeRequestDTO(liked: products[index].isLiked))
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func fetchProducts(keyword: String?) async {

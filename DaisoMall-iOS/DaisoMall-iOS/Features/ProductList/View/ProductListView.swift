@@ -49,7 +49,6 @@ struct ProductListView: View {
                     await vm.fetchProducts(keyword: keyword)
                 }
             }
-
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
@@ -111,7 +110,9 @@ struct ProductListView: View {
         LazyVStack(alignment: .center, spacing: 20) {
             ForEach(vm.products) { product in
                 ProductCard(product: product) {
-                    vm.toggleLike(id: product.id)
+                    Task {
+                        await vm.toggleLike(id: product.id)
+                    }
                 }
                 .padding(.horizontal, 20)
                 
