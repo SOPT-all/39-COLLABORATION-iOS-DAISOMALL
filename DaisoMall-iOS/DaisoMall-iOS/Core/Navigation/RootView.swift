@@ -45,8 +45,7 @@ struct RootView: View {
                 searchText: "",
                 onBack: {
                     selectedTab = .home
-                },
-                onSearch: { _ in }
+                }
             )
         case .discover:
             Text("발견")
@@ -65,11 +64,6 @@ struct RootView: View {
                 searchText: keyword,
                 onBack: {
                     path.removeLast()
-                },
-                onSearch: { newSearchText in
-                    path = [
-                        .list(keyword: newSearchText)
-                    ]
                 }
             )
         }
