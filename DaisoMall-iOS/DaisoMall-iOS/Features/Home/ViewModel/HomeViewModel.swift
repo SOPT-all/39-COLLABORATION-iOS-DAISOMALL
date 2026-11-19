@@ -22,6 +22,4 @@ final class HomeViewModel {
         
         recommendItems[index].isLiked.toggle()
     }
-    
-    
 }

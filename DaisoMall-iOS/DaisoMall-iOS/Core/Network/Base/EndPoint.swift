@@ -26,11 +26,11 @@ enum EndPoint {
     var method: HTTPMethod {
         switch self {
         case .example:
-                .get;
+                .get
         case .list:
-                .get;
+                .get
         case .liked:
-                .patch;
+                .patch
         }
     }
 
