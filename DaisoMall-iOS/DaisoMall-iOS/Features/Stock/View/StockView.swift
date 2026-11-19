@@ -119,7 +119,9 @@ struct StockView: View {
         LazyVStack(alignment: .leading, spacing: 20) {
             ForEach(vm.stores) { store in
                 StoreStockCard(store: store) {
-                    vm.toggleBookmark(id: store.id)
+                    Task {
+                        await vm.toggleBookmark(id: store.id)
+                    }
                 }
             }
         }
