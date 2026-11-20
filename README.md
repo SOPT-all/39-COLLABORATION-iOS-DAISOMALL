@@ -1,13 +1,12 @@
-# 39-COLLABORATION-iOS-DAISOMALL
-39기 PLAY SOPT 합동 세미나 iOS 1조 다이소몰 🏬
+<img alt="1" src="https://github.com/user-attachments/assets/787c83da-45db-4bd6-8ce6-fcbb8f2963ef" />
 
 ## 📱 구현 화면
 
-| 홈 | 상품 조회 · 좋아요 |
-| :---: | :---: |
-| <video src="https://github.com/user-attachments/assets/649047e9-65a4-4e81-aa9b-9932d4be6021" width="250"></video> | <video src="https://github.com/user-attachments/assets/a04aed42-5fe6-468d-9b7c-f075399baf73" width="250"></video> |
+| 홈 | 상품 조회 | 좋아요 |
+| :---: | :---: |  :---: |
+| <img src="https://github.com/user-attachments/assets/edd92ae3-7e10-4055-964c-b660eb043cf3" width="250"> | <img src="https://github.com/user-attachments/assets/fd789f4a-81a6-4c55-b159-1474a97ba663" width="250"> | <img src="https://github.com/user-attachments/assets/faa9a318-11ff-41df-9817-8c407e104f20" width="250"> |
 | **매장 재고 조회** | **매장 찜하기** |
-| <video src="https://github.com/user-attachments/assets/b9de8bc4-a114-4f34-9b2a-df661da6d0e9" width="250"></video> | <video src="https://github.com/user-attachments/assets/ae288c05-54e7-4c1c-8b2a-68ead309f46c" width="250"></video> |
+| <img src="https://github.com/user-attachments/assets/8c46238c-4c42-4bb0-b46a-01bc9cc20112" width="250"> | <img src="https://github.com/user-attachments/assets/c0179704-f740-43b5-82da-959b67d47af8" width="250"> |
 
 <br>
 
