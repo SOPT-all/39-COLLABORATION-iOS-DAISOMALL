@@ -12,7 +12,8 @@ struct ProductListView: View {
     @State private var vm = ProductListViewModel()
     
     let onBack: () -> Void
-    
+    let onStoreFindTap: (Int) -> Void
+
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
@@ -109,11 +110,17 @@ struct ProductListView: View {
     private var productList: some View {
         LazyVStack(alignment: .center, spacing: 20) {
             ForEach(vm.products) { product in
-                ProductCard(product: product) {
-                    Task {
-                        await vm.toggleLike(id: product.id)
+                ProductCard(
+                    product: product,
+                    onLikeTap: {
+                        Task {
+                            await vm.toggleLike(id: product.id)
+                        }
+                    },
+                    onStoreFindTap: {
+                        onStoreFindTap(product.id)
                     }
-                }
+                )
                 .padding(.horizontal, 20)
                 
                 if product.id != vm.products.last?.id {
@@ -132,6 +139,7 @@ struct ProductListView: View {
 #Preview {
     ProductListView(
         searchText: "",
-        onBack: { }
+        onBack: { },
+        onStoreFindTap: { _ in }
     )
 }

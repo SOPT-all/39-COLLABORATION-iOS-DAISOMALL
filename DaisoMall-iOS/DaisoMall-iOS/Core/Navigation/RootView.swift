@@ -50,6 +50,9 @@ struct RootView: View {
                 searchText: searchKeyword,
                 onBack: {
                     selectedTab = .home
+                },
+                onStoreFindTap: { productID in
+                    path.append(.stock(productID: productID))
                 }
             )
         case .discover:
