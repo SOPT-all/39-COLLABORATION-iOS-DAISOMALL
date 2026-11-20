@@ -11,6 +11,7 @@ enum EndPoint {
     case example(id: Int)
     case list(keyword: String?)
     case liked(id: Int)
+    case productStores(productID: Int, isSoldOutExcluded: Bool)
 
     var path: String {
         switch self {
@@ -20,6 +21,8 @@ enum EndPoint {
             "/api/v1/products";
         case .liked(let id):
             "/api/v1/products/\(id)/like";
+        case .productStores(let productID, _):
+            "/api/v1/products/\(productID)/stores"
         }
     }
 
@@ -31,12 +34,14 @@ enum EndPoint {
                 .get
         case .liked:
                 .patch
+        case .productStores:
+            .get
         }
     }
 
     var header: [String: String] {
         switch self {
-        case .example, .list, .liked:
+        case .example, .list, .liked, .productStores:
             HeaderType.basic.value
         }
     }
@@ -52,6 +57,8 @@ enum EndPoint {
                     value: keyword
                 )
             ]
+        case .productStores(_, let isSoldOutExcluded):
+            [URLQueryItem(name: "soldOut", value: String(isSoldOutExcluded))]
         }
     }
 }

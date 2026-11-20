@@ -5,22 +5,24 @@
 //  Created by 성환 on 11/12/26.
 //
 
-import SwiftUI
+import Foundation
 
 struct StockProduct {
     let id: Int
-    let image: ImageResource
+    let imageURL: URL?
     let name: String
-    let price: Int
+    let price: String
     let productNumber: String
 }
 
 extension StockProduct {
-    static let dummy = StockProduct(
-        id: 1001,
-        image: .imgProduct,
-        name: "[화잘먹/80매]마미케어 바다포도 스킨팩",
-        price: 5000,
-        productNumber: "1075034"
-    )
+    init(dto: StockProductDTO) {
+        self.init(
+            id: dto.productId,
+            imageURL: URL(string: dto.imageUrl),
+            name: dto.name,
+            price: dto.price,
+            productNumber: dto.productNumber
+        )
+    }
 }

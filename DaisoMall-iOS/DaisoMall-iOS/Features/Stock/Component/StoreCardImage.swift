@@ -5,14 +5,20 @@
 //  Created by 성환 on 11/12/26.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct StoreCardImage: View {
-    let image: ImageResource
+    let imageURL: URL?
     let businessStatus: StoreStock.BusinessStatus
 
     var body: some View {
-        Image(image)
+        KFImage(imageURL)
+            .placeholder {
+                Image(.imgPlaceholder)
+                    .resizable()
+                    .scaledToFill()
+            }
             .resizable()
             .scaledToFill()
             .frame(width: 82, height: 110)
@@ -62,8 +68,8 @@ struct StoreCardImage: View {
 
 #Preview {
     HStack(alignment: .top, spacing: 12) {
-        StoreCardImage(image: .imgMarket1, businessStatus: .open)
-        StoreCardImage(image: .imgMarket3, businessStatus: .closed)
+        StoreCardImage(imageURL: nil, businessStatus: .open)
+        StoreCardImage(imageURL: nil, businessStatus: .closed)
     }
     .padding()
 }

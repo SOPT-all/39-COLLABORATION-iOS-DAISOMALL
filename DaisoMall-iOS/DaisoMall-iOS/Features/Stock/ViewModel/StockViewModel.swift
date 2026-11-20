@@ -10,12 +10,21 @@ import Observation
 
 @Observable
 final class StockViewModel {
-    private(set) var product = StockProduct.dummy
-    private(set) var stores = StoreStock.dummyList
+    private(set) var product: StockProduct?
+    private(set) var stores: [StoreStock] = []
     private(set) var isSoldOutExcluded = true
 
-    var displayedStores: [StoreStock] {
-        isSoldOutExcluded ? stores.filter { $0.stockQuantity > 0 } : stores
+    func fetchStores(productID: Int) async {
+        do {
+            let response: ProductStoresDTO = try await BaseService.shared.request(
+                endPoint: .productStores(productID: productID, isSoldOutExcluded: isSoldOutExcluded)
+            )
+            try Task.checkCancellation()
+            product = StockProduct(dto: response.product)
+            stores = response.stores.map { StoreStock(dto: $0) }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
     func toggleSoldOutExcluded() {
