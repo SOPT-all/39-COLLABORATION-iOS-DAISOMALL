@@ -1,5 +1,12 @@
-# 39-COLLABORATION-iOS-DAISOMALL
-39기 PLAY SOPT 합동 세미나 iOS 1조 다이소몰 🏬
+<img alt="1" src="https://github.com/user-attachments/assets/787c83da-45db-4bd6-8ce6-fcbb8f2963ef" />
+
+## 📱 구현 화면
+
+| 홈 | 상품 조회 | 좋아요 |
+| :---: | :---: |  :---: |
+| <img src="https://github.com/user-attachments/assets/edd92ae3-7e10-4055-964c-b660eb043cf3" width="250"> | <img src="https://github.com/user-attachments/assets/fd789f4a-81a6-4c55-b159-1474a97ba663" width="250"> | <img src="https://github.com/user-attachments/assets/faa9a318-11ff-41df-9817-8c407e104f20" width="250"> |
+| **매장 재고 조회** | **매장 찜하기** |
+| <img src="https://github.com/user-attachments/assets/8c46238c-4c42-4bb0-b46a-01bc9cc20112" width="250"> | <img src="https://github.com/user-attachments/assets/c0179704-f740-43b5-82da-959b67d47af8" width="250"> |
 
 <br>
 
@@ -9,7 +16,7 @@
 | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/855b9e1e-9852-490c-9cee-d3e07e61668c" width="200"> | <img src="https://github.com/user-attachments/assets/151311c6-83c8-441b-a89e-b142fe5e304e" width="200"> | 
 | `iOS Lead` | `iOS Developer` | 
-| 담당 기능 | 담당 기능 |
+| 매장 재고 조회 뷰<br>매장 재고 조회 · 매장 찜 API 연동 | 홈 뷰 · 상품 조회 뷰<br>상품 목록 조회 · 좋아요 API 연동 |
 
 <br>
 
@@ -26,9 +33,11 @@
 
 ### Network
 
+![URLSession](https://img.shields.io/badge/URLSession-007AFF?style=for-the-badge&logo=apple&logoColor=white)
 
 ### Library
 
+![Kingfisher](https://img.shields.io/badge/Kingfisher-SPM-F05138?style=for-the-badge&logo=swift&logoColor=white)
 
 ### Collaboration
 
@@ -109,7 +118,7 @@ hotfix/#3
 
 **Example**
 
-```text id="e0h5wb"
+```text
 feat: 로그인 기능 추가 (#12)
 fix: 로그인 예외 처리 버그 수정 (#12)
 docs: API 명세 업데이트 (#12)
@@ -149,26 +158,37 @@ refactor: 로그인 처리 로직 리팩토링 (#12)
 
 SwiftUI와 MVVM 아키텍처를 기반으로 기능별 폴더를 분리하고, 공통 기능과 리소스를 별도로 관리합니다.
 
-```text id="8sb260"
-├── 📁 APP
+```text
+├── 📁 APP                      # 앱 진입점
 │   └── 📃 DaisoMall_iOSApp.swift
 ├── 📁 Core
-│   ├── 📁 Extension
-│   ├── 📁 Navigation
+│   ├── 📁 Extension            # Font, Typography 등 공통 확장
+│   ├── 📁 Navigation           # RootView, Route
 │   └── 📁 Network
-│       ├── 📁 Base
-│       ├── 📁 DTO
+│       ├── 📁 Base             # BaseService, EndPoint, NetworkError 등
+│       ├── 📁 DTO              # 요청·응답 DTO
+│       │   └── 📁 Product
 │       └── 📁 Service
 ├── 📁 Features
-│   └── 📁 Home
+│   ├── 📁 Home                 # 홈
+│   │   ├── 📁 Model
+│   │   ├── 📁 View
+│   │   │   └── 📁 Component
+│   │   └── 📁 ViewModel
+│   ├── 📁 ProductList          # 상품 조회
+│   │   ├── 📁 Model
+│   │   ├── 📁 View
+│   │   │   └── 📁 Component
+│   │   └── 📁 ViewModel
+│   └── 📁 Stock                # 매장 재고 조회
+│       ├── 📁 Component
 │       ├── 📁 Model
 │       ├── 📁 View
-│       │   └── 📃 ContentView.swift
 │       └── 📁 ViewModel
 ├── 📁 Resources
 │   ├── 📃 Assets.xcassets
-│   └── 📁 Fonts
+│   └── 📁 Fonts                # Pretendard
 └── 📁 Shared
-    ├── 📁 Component
+    ├── 📁 Component            # 여러 화면에서 쓰는 공통 컴포넌트
     └── 📁 DesignSystem
 ```
