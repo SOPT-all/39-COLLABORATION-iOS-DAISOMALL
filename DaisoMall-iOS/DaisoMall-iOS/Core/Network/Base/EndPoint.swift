@@ -12,6 +12,7 @@ enum EndPoint {
     case list(keyword: String?)
     case liked(id: Int)
     case productStores(productID: Int, isSoldOutExcluded: Bool)
+    case storeFavorite(storeID: Int)
 
     var path: String {
         switch self {
@@ -23,6 +24,8 @@ enum EndPoint {
             "/api/v1/products/\(id)/like";
         case .productStores(let productID, _):
             "/api/v1/products/\(productID)/stores"
+        case .storeFavorite(let storeID):
+            "/api/v1/stores/\(storeID)/favorite"
         }
     }
 
@@ -36,19 +39,21 @@ enum EndPoint {
                 .patch
         case .productStores:
             .get
+        case .storeFavorite:
+            .patch
         }
     }
 
     var header: [String: String] {
         switch self {
-        case .example, .list, .liked, .productStores:
+        case .example, .list, .liked, .productStores, .storeFavorite:
             HeaderType.basic.value
         }
     }
 
     var queryItems: [URLQueryItem] {
         switch self {
-        case .example, .liked:
+        case .example, .liked, .storeFavorite:
             []
         case .list(let keyword):
             [

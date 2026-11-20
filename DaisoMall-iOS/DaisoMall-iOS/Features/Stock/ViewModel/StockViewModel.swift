@@ -31,9 +31,26 @@ final class StockViewModel {
         isSoldOutExcluded.toggle()
     }
 
-    func toggleBookmark(id: Int) {
+    func toggleBookmark(id: Int) async {
+        guard let store = stores.first(where: { $0.id == id }) else { return }
+
+        let isBookmarked = !store.isBookmarked
+        updateBookmark(id: id, isBookmarked: isBookmarked)
+
+        do {
+            let _: StoreFavoriteResponseDTO = try await BaseService.shared.request(
+                endPoint: .storeFavorite(storeID: id),
+                body: StoreFavoriteRequestDTO(favorite: isBookmarked)
+            )
+        } catch {
+            print(error.localizedDescription)
+            updateBookmark(id: id, isBookmarked: !isBookmarked)
+        }
+    }
+
+    private func updateBookmark(id: Int, isBookmarked: Bool) {
         guard let index = stores.firstIndex(where: { $0.id == id }) else { return }
 
-        stores[index].isBookmarked.toggle()
+        stores[index].isBookmarked = isBookmarked
     }
 }
