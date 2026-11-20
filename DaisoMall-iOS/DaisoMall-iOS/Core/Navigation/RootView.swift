@@ -24,6 +24,7 @@ struct RootView: View {
 
             NavigationBar(selectedTab: $selectedTab)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .onChange(of: selectedTab) {
             path.removeAll()
         }
