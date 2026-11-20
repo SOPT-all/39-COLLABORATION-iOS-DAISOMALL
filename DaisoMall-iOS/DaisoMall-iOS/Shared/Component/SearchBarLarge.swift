@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SearchBarLarge: View {
     @Binding var text: String
-    
+    @FocusState private var isFocused: Bool
+
     let onSearch: (String) -> Void
 
     var body: some View {
@@ -34,6 +35,7 @@ struct SearchBarLarge: View {
                     .typography(.body_m_14)
                     .foregroundStyle(.grey10)
                     .frame(maxWidth: .infinity)
+                    .focused($isFocused)
                     .onSubmit { submitSearch() }
 
                     Button {
@@ -59,7 +61,8 @@ struct SearchBarLarge: View {
         )
         
         guard !keyword.isEmpty else { return }
-        
+
+        isFocused = false
         onSearch(keyword)
     }
 }

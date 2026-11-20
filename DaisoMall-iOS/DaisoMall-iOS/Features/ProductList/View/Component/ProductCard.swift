@@ -11,7 +11,8 @@ import Kingfisher
 struct ProductCard: View {
     let product: ProductCardModel
     let onLikeTap: () -> Void
-    
+    let onStoreFindTap: () -> Void
+
     var body: some View {
         HStack(spacing: 14) {
             ZStack(alignment: .bottomTrailing) {
@@ -73,7 +74,9 @@ struct ProductCard: View {
             
             Spacer()
             
-            ProductActionButton(title: "구매가능 매장찾기", icon: .icAvailablestores) {}
+            ProductActionButton(title: "구매가능 매장찾기", icon: .icAvailablestores) {
+                onStoreFindTap()
+            }
         }
     }
 }
@@ -89,6 +92,7 @@ struct ProductCard: View {
             reviewCounts: "9,999+",
             isLiked: false
         ),
-           onLikeTap: {}
-       )
+        onLikeTap: {},
+        onStoreFindTap: {}
+    )
 }
