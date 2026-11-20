@@ -1,6 +1,14 @@
 # 39-COLLABORATION-iOS-DAISOMALL
 39기 PLAY SOPT 합동 세미나 iOS 1조 다이소몰 🏬
 
+## 📱 구현 화면
+
+| 홈 | 상품 조회 · 좋아요 |
+| :---: | :---: |
+| <video src="https://github.com/user-attachments/assets/649047e9-65a4-4e81-aa9b-9932d4be6021" width="250"></video> | <video src="https://github.com/user-attachments/assets/a04aed42-5fe6-468d-9b7c-f075399baf73" width="250"></video> |
+| **매장 재고 조회** | **매장 찜하기** |
+| <video src="https://github.com/user-attachments/assets/b9de8bc4-a114-4f34-9b2a-df661da6d0e9" width="250"></video> | <video src="https://github.com/user-attachments/assets/ae288c05-54e7-4c1c-8b2a-68ead309f46c" width="250"></video> |
+
 <br>
 
 ##  iOS Developer
@@ -9,7 +17,7 @@
 | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/855b9e1e-9852-490c-9cee-d3e07e61668c" width="200"> | <img src="https://github.com/user-attachments/assets/151311c6-83c8-441b-a89e-b142fe5e304e" width="200"> | 
 | `iOS Lead` | `iOS Developer` | 
-| 담당 기능 | 담당 기능 |
+| 매장 재고 조회 뷰<br>매장 재고 조회 · 매장 찜 API 연동 | 홈 뷰 · 상품 조회 뷰<br>상품 목록 조회 · 좋아요 API 연동 |
 
 <br>
 
@@ -26,9 +34,11 @@
 
 ### Network
 
+![URLSession](https://img.shields.io/badge/URLSession-007AFF?style=for-the-badge&logo=apple&logoColor=white)
 
 ### Library
 
+![Kingfisher](https://img.shields.io/badge/Kingfisher-SPM-F05138?style=for-the-badge&logo=swift&logoColor=white)
 
 ### Collaboration
 
@@ -109,7 +119,7 @@ hotfix/#3
 
 **Example**
 
-```text id="e0h5wb"
+```text
 feat: 로그인 기능 추가 (#12)
 fix: 로그인 예외 처리 버그 수정 (#12)
 docs: API 명세 업데이트 (#12)
@@ -149,26 +159,37 @@ refactor: 로그인 처리 로직 리팩토링 (#12)
 
 SwiftUI와 MVVM 아키텍처를 기반으로 기능별 폴더를 분리하고, 공통 기능과 리소스를 별도로 관리합니다.
 
-```text id="8sb260"
-├── 📁 APP
+```text
+├── 📁 APP                      # 앱 진입점
 │   └── 📃 DaisoMall_iOSApp.swift
 ├── 📁 Core
-│   ├── 📁 Extension
-│   ├── 📁 Navigation
+│   ├── 📁 Extension            # Font, Typography 등 공통 확장
+│   ├── 📁 Navigation           # RootView, Route
 │   └── 📁 Network
-│       ├── 📁 Base
-│       ├── 📁 DTO
+│       ├── 📁 Base             # BaseService, EndPoint, NetworkError 등
+│       ├── 📁 DTO              # 요청·응답 DTO
+│       │   └── 📁 Product
 │       └── 📁 Service
 ├── 📁 Features
-│   └── 📁 Home
+│   ├── 📁 Home                 # 홈
+│   │   ├── 📁 Model
+│   │   ├── 📁 View
+│   │   │   └── 📁 Component
+│   │   └── 📁 ViewModel
+│   ├── 📁 ProductList          # 상품 조회
+│   │   ├── 📁 Model
+│   │   ├── 📁 View
+│   │   │   └── 📁 Component
+│   │   └── 📁 ViewModel
+│   └── 📁 Stock                # 매장 재고 조회
+│       ├── 📁 Component
 │       ├── 📁 Model
 │       ├── 📁 View
-│       │   └── 📃 ContentView.swift
 │       └── 📁 ViewModel
 ├── 📁 Resources
 │   ├── 📃 Assets.xcassets
-│   └── 📁 Fonts
+│   └── 📁 Fonts                # Pretendard
 └── 📁 Shared
-    ├── 📁 Component
+    ├── 📁 Component            # 여러 화면에서 쓰는 공통 컴포넌트
     └── 📁 DesignSystem
 ```
