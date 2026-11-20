@@ -10,6 +10,7 @@ import SwiftUI
 struct RootView: View {
     @State private var path: [Route] = []
     @State private var selectedTab: NavigationTab = .home
+    @State private var searchKeyword = ""
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -27,6 +28,10 @@ struct RootView: View {
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onChange(of: selectedTab) {
             path.removeAll()
+
+            if selectedTab != .stock {
+                searchKeyword = ""
+            }
         }
     }
 
@@ -35,15 +40,14 @@ struct RootView: View {
         switch selectedTab {
         case .home:
             HomeView { keyword in
-                path.append(
-                    .list(keyword: keyword)
-                )
+                searchKeyword = keyword
+                selectedTab = .stock
             }
         case .category:
             Text("카테고리")
         case .stock:
-            ProductListView (
-                searchText: "",
+            ProductListView(
+                searchText: searchKeyword,
                 onBack: {
                     selectedTab = .home
                 }
@@ -60,13 +64,6 @@ struct RootView: View {
         switch route {
         case .stock(let productID):
             StockView(productID: productID)
-        case .list(let keyword):
-            ProductListView(
-                searchText: keyword,
-                onBack: {
-                    path.removeLast()
-                }
-            )
         }
     }
 }
