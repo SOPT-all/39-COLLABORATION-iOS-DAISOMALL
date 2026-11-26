@@ -68,7 +68,7 @@ struct HomeView: View {
                     MainBanner(
                         banner: banner,
                         currentPage: 1,
-                        totalPage: 13)
+                        totalPage: 3)
                 }
             }
             Group {
