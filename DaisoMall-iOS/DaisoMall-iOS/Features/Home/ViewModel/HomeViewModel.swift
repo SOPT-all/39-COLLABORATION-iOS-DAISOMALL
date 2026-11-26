@@ -22,7 +22,7 @@ final class HomeViewModel {
         recommendItems[index].isLiked.toggle()
         
         do {
-            let response: ProductLikeResponseDTO = try await BaseService.shared.request(endPoint: .liked(id: id), body: ProductLikeRequestDTO(liked: recommendItems[index].isLiked))
+            let _ : ProductLikeResponseDTO = try await BaseService.shared.request(endPoint: .liked(id: id), body: ProductLikeRequestDTO(liked: recommendItems[index].isLiked))
         } catch {
             print(error.localizedDescription)
         }
