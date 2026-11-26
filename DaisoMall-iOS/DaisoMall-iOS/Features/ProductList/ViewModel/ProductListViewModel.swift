@@ -21,7 +21,7 @@ final class ProductListViewModel {
         products[index].isLiked.toggle()
         
         do {
-            let response: ProductLikeResponseDTO = try await BaseService.shared.request(endPoint: .liked(id: id), body: ProductLikeRequestDTO(liked: products[index].isLiked))
+            let _: ProductLikeResponseDTO = try await BaseService.shared.request(endPoint: .liked(id: id), body: ProductLikeRequestDTO(liked: products[index].isLiked))
         } catch {
             print(error.localizedDescription)
         }

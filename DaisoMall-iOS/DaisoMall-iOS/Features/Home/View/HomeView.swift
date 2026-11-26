@@ -20,13 +20,13 @@ struct HomeView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
                 .background(.daisoWhite)
-
+            
             
             ScrollView(.vertical, showsIndicators: false) {
                 bannerSection
                 
                 recommendSection
-                .padding(.leading, 20)
+                    .padding(.leading, 20)
             }
         }
     }
@@ -97,16 +97,20 @@ struct HomeView: View {
                 .typography(.title_b_18)
                 .foregroundStyle(.daisoBlack)
             HStack(alignment: .top, spacing:4) {
-                ForEach(vm.recommendItems) { product in
+                ForEach(vm.recommendItems.prefix(4)) { product in
                     HomeRecommend(
                         product: product,
                         onLikeTap: {
-                        vm.toggleLike(id: product.id)
-                        })
+                            Task { await vm.toggleLike(id: product.id) }
+                        }
+                    )
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .clipped()
+            .task {
+                await vm.fetchProducts(keyword: "")
+            }
         }
     }
 }
